@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  width: 100%; /* Make the app take the full width of the mockup container */
+  height: 100%; /* Make the app take the full height of the mockup container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Hide any overflowing content */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.App-logo {
+  max-width: 100%; /* Ensure the logo scales within the container */
+  max-height: 100%; /* Prevents the logo from expanding beyond its container */
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  width: 100%; /* Ensure the header takes the full width */
+  height: 100%; /* Ensure the header takes the full height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin); /* Adjust font size to fit dynamically */
+  color: white;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
