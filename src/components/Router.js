@@ -56,6 +56,11 @@ const RouterComponenet = () => {
             path="/main" 
             element={<MainScreen />} 
         />
+
+        <Route 
+            path="/single-article" 
+            element={<MainScreen />} 
+        />
         
       </Routes>
     </Router>

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import '../css/MainScreen.css'
-import ArticlesList from './ArticlesList.js'
+import {useNavigate} from 'react-router-dom';
 
-const MainScreen = () => {
+const SingleArticle = ({articleId}) => {
+  const navigate = useNavigate(); // useNavigate hook for navigation
   const [topic, setTopic] = useState(); // Use useState to manage topic state
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
 
@@ -12,7 +13,7 @@ const MainScreen = () => {
 
   const handleSearchClick = () => {
     setTopic(searchInput); // Update the topic state with the input field value
-    console.log('Topic updated to:', searchInput);
+    console.log(topic);
   };
 
   return (
@@ -49,11 +50,9 @@ const MainScreen = () => {
         <div className="topical-news"></div>
       </div>
 
-      <div className="news-render-space">
-        <ArticlesList topic={topic}/>
-        </div>
+      <div className="news-render-space"><ArticlesList topic={topic}/></div>
       </div>
   );
 };
 
-export default MainScreen;
+export default SingleArticle;
