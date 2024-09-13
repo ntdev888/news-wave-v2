@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import '../css/MainScreen.css'
 import ArticlesList from './ArticlesList.js'
 
-const MainScreen = () => {
-  const [topic, setTopic] = useState(); // Use useState to manage topic state
+const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, articles, isLoading}) => {
+   // Use useState to manage topic state
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
 
   const handleSearchInputChange = (event) => {
@@ -11,8 +11,8 @@ const MainScreen = () => {
   };
 
   const handleSearchClick = () => {
-    setTopic(searchInput); // Update the topic state with the input field value
-    console.log('Topic updated to:', searchInput);
+    changeTopic(searchInput); // Update the topic state with the input field value
+    console.log('Topic updated to:', topic);
   };
 
   return (
@@ -35,7 +35,7 @@ const MainScreen = () => {
               type="text" 
               placeholder="Search for topics..." 
               value={searchInput} 
-              onChange={handleSearchInputChange} // Handle input change
+              onChange={handleSearchInputChange}
             />
             <button onClick={handleSearchClick}>Search</button>
           </div>
@@ -50,7 +50,7 @@ const MainScreen = () => {
       </div>
 
       <div className="news-render-space">
-        <ArticlesList topic={topic}/>
+        <ArticlesList articles={articles} isLoading={isLoading}/>
         </div>
       </div>
   );

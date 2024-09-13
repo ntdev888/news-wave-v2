@@ -1,69 +1,116 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
 import LoginScreen from './LoginScreen';
 import CreateUser from './CreateUser';
 import MainScreen from './MainScreen';
+import SingleArticle from './SingleArticle';
 
 const RouterComponenet = () => {
-  // State for managing user login and preferences
-  const [user, setUser] = useState(null); // User object to hold user info if logged in
-  const [preferences, setPreferences] = useState({ theme: 'light', notifications: true }); // Example preferences state
-  const [loadedComponent, setLoadedComponent] = useState('LoginScreen'); // State to track which component is loaded
+  const [activeView, setActiveView] = useState("menu");
+  const [authToken, setAuthToken] = useState("");
+  const [user, setUser] = useState("");
+  const [topic, setTopic] = useState();
+  const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Function to handle user login
-  const handleLogin = (userData) => {
-    setUser(userData); // Set the user data after successful login
-    setLoadedComponent('MainScreen'); // Navigate to the main screen after login
+    
+    useEffect(() => {
+        const fetchTopics = async (input) => {
+            const endpoint = topic 
+                ? `http://localhost:8000/news/articles/?topic=${topic}` 
+                : `http://localhost:8000/news/articles-random/`;
+    
+          try {
+            const response = await fetch(
+              endpoint,
+              {
+                method: "GET",
+                headers: {
+                //   Authorization: `Token ${authToken}`,
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+    
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+    
+            const data = await response.json();
+            setArticles(data);
+            setIsLoading(false);
+            console.log("Article example:");
+            console.log(data[1]);
+          } catch (error) {
+            console.error("Error fetching data: ", error);
+            setIsLoading(false);
+          }
+        };
+    
+        fetchTopics(topic);
+      }, [topic]);
+
+
+  const changeTopic = (i) => {
+    setTopic(i);
+  }
+
+  const assignToAuthToken = (value) => {
+    setAuthToken(value);
   };
 
-  // Function to handle user logout
-  const handleLogout = () => {
-    setUser(null); // Clear user data
-    setLoadedComponent('LoginScreen'); // Navigate back to login screen
-  };
+  const renderView = () => {
+    switch (activeView) {
+      case "loginScreen":
+        return (
+          <LoginScreen
+            authToken={authToken}
+            setActiveView={setActiveView}
+            user={user}
+          />
+        );
+      case "createUser":
+        return (
+          <CreateUser
+            authToken={authToken}
+            setActiveView={setActiveView}
+            user={user}
+          />
+        );
+      case "singleArticle":
+        return (
+          <SingleArticle
+            authToken={authToken}
+            setActiveView={setActiveView}
+            user={user}
+          />
+        );
 
-  // Function to update user preferences
-  const updatePreferences = (newPreferences) => {
-    setPreferences((prev) => ({ ...prev, ...newPreferences })); // Merge existing preferences with new ones
+      // case "userAccountSettings":
+      //   return (
+      //     <UserAccountSettings
+      //       authToken={authToken}
+      //       setActiveView={setActiveView}
+      //       user={user}
+      //     />
+      //   );
+
+      default:
+        return (
+        <MainScreen 
+          setActiveView={setActiveView} 
+          changeTopic={changeTopic} 
+          articles={articles}
+          isLoading={isLoading}
+          topic={topic} 
+        />
+      );
+    }
   };
 
   return (
-    <Router>
-      <Routes>
-
-        <Route
-          path="/"
-          element={
-            user ? (
-              <MainScreen user={user} preferences={preferences} onLogout={handleLogout} />
-            ) : (
-              <LoginScreen onLogin={handleLogin} />
-            )
-          }
-        />
-
-        <Route
-          path="/mainscreen"
-          element={<MainScreen />}
-        />
-
-        <Route
-          path="/create-user"
-          element={<CreateUser />}
-        />
-
-        <Route 
-            path="/main" 
-            element={<MainScreen />} 
-        />
-
-        <Route 
-            path="/single-article" 
-            element={<MainScreen />} 
-        />
-        
-      </Routes>
-    </Router>
+    <div>
+      {renderView()}
+    </div>
   );
 };
 

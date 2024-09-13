@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import '../css/MainScreen.css'
-import {useNavigate} from 'react-router-dom';
 
 const SingleArticle = ({articleId}) => {
-  const navigate = useNavigate(); // useNavigate hook for navigation
   const [topic, setTopic] = useState(); // Use useState to manage topic state
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
 
@@ -50,7 +48,7 @@ const SingleArticle = ({articleId}) => {
         <div className="topical-news"></div>
       </div>
 
-      <div className="news-render-space"><ArticlesList topic={topic}/></div>
+      <div className="news-render-space"></div>
       </div>
   );
 };
