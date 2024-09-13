@@ -7,7 +7,7 @@ import SingleArticle from './SingleArticle';
 const RouterComponenet = () => {
   const [activeView, setActiveView] = useState("menu");
   const [authToken, setAuthToken] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState();
   const [topic, setTopic] = useState();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -55,13 +55,16 @@ const RouterComponenet = () => {
         fetchTopics(topic);
       }, [topic]);
 
+
   const changeTopic = (i) => {
     setTopic(i);
   }
 
+
   const assignToAuthToken = (value) => {
     setAuthToken(value);
   };
+
 
   const renderView = () => {
     switch (activeView) {
@@ -73,6 +76,7 @@ const RouterComponenet = () => {
             user={user}
           />
         );
+
       case "createUser":
         return (
           <CreateUser
@@ -81,6 +85,7 @@ const RouterComponenet = () => {
             user={user}
           />
         );
+
       case "singleArticle":
         return (
           <SingleArticle
@@ -89,6 +94,18 @@ const RouterComponenet = () => {
             setActiveView={setActiveView}
             user={user}
             changeTopic={changeTopic} 
+          />
+        );
+
+      case "main":
+        return (
+          <MainScreen 
+            setActiveView={setActiveView} 
+            changeTopic={changeTopic} 
+            articles={articles}
+            isLoading={isLoading}
+            topic={topic}
+            setArticle={setArticlePage} 
           />
         );
 
@@ -112,12 +129,13 @@ const RouterComponenet = () => {
           setArticle={setArticlePage} 
         />
       );
+
     }
   };
 
   return (
-    <div>
-      {renderView()}
+    <div className="app-content">
+      {user ? renderView() : renderView("loginScreen")}
     </div>
   );
 };

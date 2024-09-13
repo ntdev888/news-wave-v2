@@ -16,9 +16,8 @@ const MockupContainer = () => {
       />
 
       {/* Render the app content behind the mockup */}
-      <div className="app-content">
+      
        <RouterComponenet />
-      </div>
     </div>
 
   );

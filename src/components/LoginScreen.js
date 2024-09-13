@@ -1,19 +1,15 @@
 import React from 'react';
 import '../css/LoginScreen.css';
-import {useNavigate} from 'react-router-dom';
 
 
 const LoginScreen = () => {
-  const navigate = useNavigate(); // useNavigate hook for navigation
 
   const handleCreateUserClick = () => {
     console.log('Create User clicked');
-    navigate('/create-user'); // Navigate to the CreateUser screen
   };
 
   const handleMainClick = () => {
     console.log('Guest clicked');
-    navigate('/mainscreen'); // Navigate to the CreateUser screen
   };
 
 

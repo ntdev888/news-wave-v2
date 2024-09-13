@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import '../css/MainScreen.css'
+import React, { useState } from 'react';
+import '../css/SingleArticle.css';
 
-const SingleArticle = ({setActiveView,articleId,changeTopic}) => {
+const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
   const [topic, setTopic] = useState(); // Use useState to manage topic state
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
 
@@ -16,22 +16,20 @@ const SingleArticle = ({setActiveView,articleId,changeTopic}) => {
   };
 
   return (
-    <div className="container">
-      <div className="heading">
+    <div className="singlearticle-container">
+      <div className="singlearticle-heading">
 
-        <div className="title-area">
+        <div className="singlearticle-title-area">
+          <div className="singlearticle-home-button"></div> {/* Corrected 'className' */}
 
-      
-          <div classNames="home-button"></div>
-
-          <div className="title-main">
-            <div className='title-text-main'>NEWS WAVE</div>
-            <div className='subtext-main'>Discover news effortlessly</div>
+          <div className="singlearticle-title-main">
+            <div className='singlearticle-title-text-main'>NEWS WAVE</div>
+            <div className='singlearticle-subtext-main'>Discover news effortlessly</div>
           </div>
-          <div className="profile-button"></div>
+          <div className="singlearticle-profile-button"></div>
 
-          <div className="seach">
-          <input 
+          <div className="singlearticle-seach">
+            <input 
               type="text" 
               placeholder="Search for topics..." 
               value={searchInput} 
@@ -42,15 +40,19 @@ const SingleArticle = ({setActiveView,articleId,changeTopic}) => {
 
         </div>
 
-        <div className="banner">
-          <img src={articleId.pictureUrl} />
+        <div className="singlearticle-banner">
+          <img src={articleId.pictureUrl} alt="Article Banner" />
         </div>
 
-        <div className="topical-news"></div>
+        <div className="singlearticle-topical-news">
+          {articleId.title}
+        </div>
       </div>
 
-      <div className="news-render-space"></div>
+      <div className="singlearticle-news-render-space">
+        {articleId.description}
       </div>
+    </div>
   );
 };
 
