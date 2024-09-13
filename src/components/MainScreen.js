@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../css/MainScreen.css'
 import ArticlesList from './ArticlesList.js'
 
-const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, articles, isLoading}) => {
+const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, articles, isLoading, setArticle}) => {
    // Use useState to manage topic state
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
 
@@ -50,7 +50,7 @@ const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, article
       </div>
 
       <div className="news-render-space">
-        <ArticlesList articles={articles} isLoading={isLoading}/>
+        <ArticlesList setActiveView={setActiveView} articles={articles} isLoading={isLoading} setArticle={setArticle}/>
         </div>
       </div>
   );

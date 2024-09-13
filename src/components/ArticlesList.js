@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import '../css/ArticlesList.css'; // Import the CSS file
 
-const ArticlesList = ({ authToken, setActiveView, user, articles, isLoading }) => {
+const ArticlesList = ({ authToken, setActiveView, user, setArticle, articles, isLoading }) => {
 
-      const handleCardClick = () => {
-        setActiveView("main");
+      const handleCardClick = (i) => {
+        setActiveView("singleArticle");
+        setArticle(i)
       };
     
       if (isLoading) {
@@ -17,7 +18,7 @@ const ArticlesList = ({ authToken, setActiveView, user, articles, isLoading }) =
                     <div 
                         key={article.id} 
                         className="article-card" 
-                        onClick={() => handleCardClick(article.id)}
+                        onClick={() => handleCardClick(article)}
                     >
                         <img 
                             src={article.pictureUrl} 

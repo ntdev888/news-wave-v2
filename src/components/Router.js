@@ -11,6 +11,12 @@ const RouterComponenet = () => {
   const [topic, setTopic] = useState();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // const [articleId, setArticleId] = useState();
+  const [article, setArticle] = useState();
+
+  const setArticlePage = (i) => {
+    setArticle(i)
+  }
 
     
     useEffect(() => {
@@ -49,7 +55,6 @@ const RouterComponenet = () => {
         fetchTopics(topic);
       }, [topic]);
 
-
   const changeTopic = (i) => {
     setTopic(i);
   }
@@ -79,9 +84,11 @@ const RouterComponenet = () => {
       case "singleArticle":
         return (
           <SingleArticle
+            articleId={article}
             authToken={authToken}
             setActiveView={setActiveView}
             user={user}
+            changeTopic={changeTopic} 
           />
         );
 
@@ -101,7 +108,8 @@ const RouterComponenet = () => {
           changeTopic={changeTopic} 
           articles={articles}
           isLoading={isLoading}
-          topic={topic} 
+          topic={topic}
+          setArticle={setArticlePage} 
         />
       );
     }
