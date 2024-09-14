@@ -15,6 +15,10 @@ const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, article
     console.log('Topic updated to:', topic);
   };
 
+  const handleHomeClick = (e) => {
+    setActiveView("main");
+  }
+
   return (
     <div className="container">
       <div className="heading">
@@ -22,8 +26,12 @@ const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, article
         <div className="title-area">
 
       
-          <div classNames="home-button"></div>
-
+          <div classNames="mainscreen-home-button"></div>
+          <img src="./imgs/home.png" 
+            alt="Description" 
+            style={{ width: '20px', height: '20px' }}
+            onClick={handleHomeClick} 
+            />
           <div className="title-main">
             <div className='title-text-main'>NEWS WAVE</div>
             <div className='subtext-main'>Discover news effortlessly</div>

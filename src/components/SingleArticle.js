@@ -3,8 +3,7 @@ import '../css/SingleArticle.css';
 
 
 
-const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
-  const [topic, setTopic] = useState(); // Use useState to manage topic state
+const SingleArticle = ({ setActiveView, articleId, changeTopic, topic }) => {
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
 
   const contentToSplit = articleId.content
@@ -20,6 +19,10 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
     console.log(topic);
   };
 
+  const handleHomeClick = (e) => {
+    setActiveView("main");
+  }
+
   const renderParagraphs = (i) => { 
     return i.split('\n').map((paragraph, index) => (
       <p key={index}>{paragraph}</p>
@@ -32,7 +35,13 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
       <div className="singlearticle-heading">
 
         <div className="singlearticle-title-area">
-          <div className="singlearticle-home-button"></div> {/* Corrected 'className' */}
+          <div className="singlearticle-home-button">
+            <img src="./imgs/home.png" 
+            alt="Description" 
+            style={{ width: '20px', height: '20px' }}
+            onClick={handleHomeClick} 
+            />
+            </div> 
 
           <div className="singlearticle-title-main">
             <div onClick={handleSearchClick} className='singlearticle-title-text-main'>NEWS WAVE</div>
@@ -45,7 +54,7 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
               type="text" 
               placeholder="Search for topics..." 
               value={searchInput} 
-              onChange={handleSearchInputChange} // Handle input change
+              onChange={handleSearchInputChange} 
             />
             <button onClick={handleSearchClick}>Search</button>
           </div>

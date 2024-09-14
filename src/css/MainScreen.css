@@ -39,7 +39,11 @@
     justify-self: center;
 }
   
-  .home-button { grid-area: home-button; }
+  .mainscreen-home-button { 
+    grid-area: home-button;
+    align-content: flex-end;
+    justify-self: end;
+  }
   
   .profile-button { grid-area: profile-button; }
 

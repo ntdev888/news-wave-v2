@@ -14,7 +14,7 @@
 .singlearticle-heading {  
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr; /* Corrected from '1r' to '1fr' */
+    grid-template-rows: 1.3fr 1fr 0.5fr; /* Corrected from '1r' to '1fr' */
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -43,6 +43,8 @@
 }
   
 .singlearticle-home-button { 
+    align-content: flex-end;
+    justify-self: end;
     grid-area: sa-home-button; 
 }
   
@@ -99,6 +101,7 @@
     grid-area: sa-topical-news; 
     padding-left: 15px;
     padding-right: 20px;
+
 }
   
 .singlearticle-news-render-space { 
