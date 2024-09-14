@@ -125,6 +125,11 @@ const LoginScreen = ({ setActiveView, setUser, setToken }) => {
         <div className="subtext-login">Discover news effortlessly</div>
       </div>
 
+      <img 
+      className="image"
+      src="./imgs/newswave.png"
+      />
+
       <div className="button-box">
         <div className="button1">
           <button className="button" onClick={showPopup}>

@@ -64,9 +64,9 @@ const MainScreen = ({authToken, articles , setArticle , setActiveView, setIsLoad
 
       
           <div className="mainscreen-home-button">
-          <img src="./imgs/home.png" 
+          <img src="./imgs/Home.png" 
             alt="Description" 
-            style={{ width: '20px', height: '20px' }}
+            style={{ width: '30px', height: '30px' }}
             onClick={handleHomeClick} 
             />
           </div>
@@ -78,9 +78,9 @@ const MainScreen = ({authToken, articles , setArticle , setActiveView, setIsLoad
           </div>
 
           <div className="mainscreen-profile-button">
-          <img src="./imgs/account.png" 
+          <img src="./imgs/Avatar.png" 
             alt="Description" 
-            style={{ width: '20px', height: '20px' }}
+            style={{ width: '30px', height: '30px' }}
             onClick={handleHomeClick} 
             />
           </div>

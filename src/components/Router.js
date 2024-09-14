@@ -3,6 +3,7 @@ import LoginScreen from './LoginScreen';
 import CreateUser from './CreateUser';
 import MainScreen from './MainScreen';
 import SingleArticle from './SingleArticle';
+import '../css/router.css'
 
 const RouterComponenet = () => {
   const [activeView, setActiveView] = useState("menu");

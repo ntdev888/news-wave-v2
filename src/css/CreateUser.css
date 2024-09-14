@@ -6,6 +6,13 @@
   text-decoration: underline;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: flex-end;
+}
+
 .subtext {
   color: rgba(0, 0, 0, 1);
   font-family: 'Open Sans Hebrew';
@@ -13,8 +20,21 @@
   font-weight: 700;
 }
 
+.cu-button-box {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-self: center;
+  justify-content: center;
+}
+
 .form-field {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.button {
+  margin: 3px;
 }
 
 .input-field {

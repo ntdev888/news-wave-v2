@@ -36,9 +36,9 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic, topic }) => {
 
         <div className="singlearticle-title-area">
           <div className="singlearticle-home-button">
-            <img src="./imgs/home.png" 
+            <img src="./imgs/Home.png" 
             alt="Description" 
-            style={{ width: '20px', height: '20px' }}
+            style={{ width: '30px', height: '30px' }}
             onClick={handleHomeClick} 
             />
             </div> 
@@ -49,9 +49,9 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic, topic }) => {
           </div>
           
           <div className="singlearticle-profile-button">
-          <img src="./imgs/account.png" 
+          <img src="./imgs/Avatar.png" 
             alt="Description" 
-            style={{ width: '20px', height: '20px' }}
+            style={{ width: '30px', height: '30px' }}
             onClick={handleHomeClick} 
             />
           </div>

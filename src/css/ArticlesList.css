@@ -3,6 +3,8 @@
     flex-direction: column;
     gap: 10px;
     padding: 20px;
+    background-color: rgba(22, 22, 22, 1);
+    color: rgba(255, 255, 255, 1);
 }
 
 .article-card {
@@ -10,9 +12,9 @@
     align-items: center;
     cursor: pointer;
     padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 5px;
     transition: background-color 0.3s;
+    background-color: rgba(49, 49, 49, 1);
 }
 
 .article-card:hover {
@@ -30,5 +32,11 @@
 .article-title {
     font-size: 16px;
     font-weight: bold;
-    color: #333;
+    color: rgba(255, 255, 255, 1);
+}
+
+.article-title:hover {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(29, 29, 29);
 }

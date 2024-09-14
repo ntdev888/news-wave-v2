@@ -103,13 +103,28 @@ const CreateUser = ({ setActiveView, setUser, setToken }) => {
   };
 
   return (
-    <div>
-      <span className="title-text">NEWS WAVE</span>
-      <span className="subtext">Discover news effortlessly</span>
+    <div className="container-createuser">
+      <div className='header'>      
+        <span className="title-text">NEWS WAVE</span>
+        <span className="subtext">Discover news effortlessly</span>
+      </div>
 
-      {/* Form */}
-      <div>
+
+      <div className='form-elements'>
         <form onSubmit={handleSubmit}>
+
+        <div>
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Enter your username"
+              className="input-field"
+            />
+          </div>
+
           <div>
             <label>Email</label>
             <input
@@ -134,20 +149,11 @@ const CreateUser = ({ setActiveView, setUser, setToken }) => {
             />
           </div>
 
-          <div>
-            <label>Username</label>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="Enter your username"
-              className="input-field"
-            />
+          
+          <div className='cu-button-box'>
+            <button type="submit" className="button create-account-button">Create Account</button>
+            <button type="button" className="button cancel-button" onClick={handleCancelClick}>Cancel</button>
           </div>
-
-          <button type="submit" className="button create-account-button">Create Account</button>
-          <button type="button" className="button cancel-button" onClick={handleCancelClick}>Cancel</button>
         </form>
       </div>
 
