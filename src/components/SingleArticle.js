@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import '../css/SingleArticle.css';
+
+
 
 const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
   const [topic, setTopic] = useState(); // Use useState to manage topic state
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
+
+  const contentToSplit = articleId.content
+  console.log(contentToSplit)
 
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value); // Update the input field value
@@ -15,6 +20,13 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
     console.log(topic);
   };
 
+  const renderParagraphs = (i) => { 
+    return i.split('\n').map((paragraph, index) => (
+      <p key={index}>{paragraph}</p>
+    ));
+  };
+
+
   return (
     <div className="singlearticle-container">
       <div className="singlearticle-heading">
@@ -23,7 +35,7 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
           <div className="singlearticle-home-button"></div> {/* Corrected 'className' */}
 
           <div className="singlearticle-title-main">
-            <div className='singlearticle-title-text-main'>NEWS WAVE</div>
+            <div onClick={handleSearchClick} className='singlearticle-title-text-main'>NEWS WAVE</div>
             <div className='singlearticle-subtext-main'>Discover news effortlessly</div>
           </div>
           <div className="singlearticle-profile-button"></div>
@@ -50,7 +62,7 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic }) => {
       </div>
 
       <div className="singlearticle-news-render-space">
-        {articleId.description}
+        {renderParagraphs(contentToSplit)}
       </div>
     </div>
   );

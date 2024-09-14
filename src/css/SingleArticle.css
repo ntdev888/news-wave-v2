@@ -97,9 +97,13 @@
   
 .singlearticle-topical-news { 
     grid-area: sa-topical-news; 
+    padding-left: 15px;
+    padding-right: 20px;
 }
   
 .singlearticle-news-render-space { 
+    padding-left: 15px;
+    padding-right: 20px;
     grid-area: sa-news-render-space; 
     height: 100%;
 }
