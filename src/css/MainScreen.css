@@ -12,13 +12,12 @@
   
   .heading {  display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1r;
+    grid-template-rows: 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
       "title-area"
-      "banner"
-      "topical-news";
+      "banner";
     grid-area: heading;
   }
   
@@ -45,11 +44,17 @@
     justify-self: end;
   }
   
-  .profile-button { grid-area: profile-button; }
+  .mainscreen-profile-button { 
+    grid-area: profile-button; 
+    align-content: flex-end;
+    justify-self: start;
+  }
 
   .title-main {
-    padding-top: 80px;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    justify-content: end;
     align-items: center;
     grid-area: title-text-main;
     width: 100%;
@@ -79,9 +84,16 @@
  
   }
   
-  .banner { grid-area: banner; }
-  
-  .topical-news { grid-area: topical-news; }
+  .banner { 
+    grid-area: banner; 
+    overflow: hidden;
+  }
+
+  .banner-image {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  }
   
   .news-render-space { 
     grid-area: news-render-space; 

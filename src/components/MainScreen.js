@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../css/MainScreen.css'
 import ArticlesList from './ArticlesList.js'
 
-const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, articles, isLoading, setArticle}) => {
+const MainScreen = ({authToken, articles , setArticle , setActiveView, setIsLoading, user, changeTopic, topic, isLoading, setArticles}) => {
    // Use useState to manage topic state
   const [searchInput, setSearchInput] = useState(''); // State for the input field value
 
@@ -19,6 +19,43 @@ const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, article
     setActiveView("main");
   }
 
+  useEffect(() => {
+    const fetchTopics = async (input) => {
+        const endpoint = topic 
+            ? `http://localhost:8000/news/articles/?topic=${topic}` 
+            : `http://localhost:8000/news/articles-random/`;
+
+      try {
+        const response = await fetch(
+          endpoint,
+          {
+            method: "GET",
+            headers: {
+            //   Authorization: `Token ${authToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        setArticles(data);
+        setIsLoading(false);
+        console.log("Article example:");
+        console.log(data[1]);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchTopics(topic);
+  }, [topic]);
+
+
   return (
     <div className="container">
       <div className="heading">
@@ -26,17 +63,27 @@ const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, article
         <div className="title-area">
 
       
-          <div classNames="mainscreen-home-button"></div>
+          <div className="mainscreen-home-button">
           <img src="./imgs/home.png" 
             alt="Description" 
             style={{ width: '20px', height: '20px' }}
             onClick={handleHomeClick} 
             />
+          </div>
+          
+
           <div className="title-main">
             <div className='title-text-main'>NEWS WAVE</div>
             <div className='subtext-main'>Discover news effortlessly</div>
           </div>
-          <div className="profile-button"></div>
+
+          <div className="mainscreen-profile-button">
+          <img src="./imgs/account.png" 
+            alt="Description" 
+            style={{ width: '20px', height: '20px' }}
+            onClick={handleHomeClick} 
+            />
+          </div>
 
           <div className="seach">
           <input 
@@ -51,10 +98,12 @@ const MainScreen = ({authToken, setActiveView, user, changeTopic, topic, article
         </div>
 
         <div className="banner">
-
+        <img 
+            className="banner-image"
+            src="./imgs/background.png" 
+            alt="Description" 
+            />
         </div>
-
-        <div className="topical-news"></div>
       </div>
 
       <div className="news-render-space">

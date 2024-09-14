@@ -11,55 +11,7 @@ const RouterComponenet = () => {
   const [topic, setTopic] = useState();
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [articleId, setArticleId] = useState();
   const [article, setArticle] = useState();
-
-  const setArticlePage = (i) => {
-    setArticle(i)
-  }
-
-    
-    useEffect(() => {
-        const fetchTopics = async (input) => {
-            const endpoint = topic 
-                ? `http://localhost:8000/news/articles/?topic=${topic}` 
-                : `http://localhost:8000/news/articles-random/`;
-    
-          try {
-            const response = await fetch(
-              endpoint,
-              {
-                method: "GET",
-                headers: {
-                //   Authorization: `Token ${authToken}`,
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-    
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
-            }
-    
-            const data = await response.json();
-            setArticles(data);
-            setIsLoading(false);
-            console.log("Article example:");
-            console.log(data[1]);
-          } catch (error) {
-            console.error("Error fetching data: ", error);
-            setIsLoading(false);
-          }
-        };
-    
-        fetchTopics(topic);
-      }, [topic]);
-
-
-  const changeTopic = (i) => {
-    setTopic(i);
-  }
-
 
   const assignToAuthToken = (value) => {
     setAuthToken(value);
@@ -73,7 +25,7 @@ const RouterComponenet = () => {
           <LoginScreen
             authToken={authToken}
             setActiveView={setActiveView}
-            user={user}
+            setUser={setUser}
           />
         );
 
@@ -93,20 +45,22 @@ const RouterComponenet = () => {
             authToken={authToken}
             setActiveView={setActiveView}
             user={user}
-            changeTopic={changeTopic} 
+            changeTopic={setTopic} 
           />
         );
 
       case "main":
         return (
           <MainScreen 
-            setActiveView={setActiveView} 
-            changeTopic={changeTopic} 
-            articles={articles}
-            isLoading={isLoading}
-            topic={topic}
-            setArticle={setArticlePage} 
-          />
+          setActiveView={setActiveView} 
+          changeTopic={setTopic} 
+          isLoading={isLoading}
+          topic={topic}
+          articles={articles}
+          setArticles={setArticles}
+          setIsLoading={setIsLoading}
+          setArticle={setArticle} 
+        />
         );
 
       // case "userAccountSettings":
@@ -120,13 +74,10 @@ const RouterComponenet = () => {
 
       default:
         return (
-        <MainScreen 
-          setActiveView={setActiveView} 
-          changeTopic={changeTopic} 
-          articles={articles}
-          isLoading={isLoading}
-          topic={topic}
-          setArticle={setArticlePage} 
+          <LoginScreen
+          setAuthToken={setAuthToken}
+          setActiveView={setActiveView}
+          setUser={setUser}
         />
       );
 

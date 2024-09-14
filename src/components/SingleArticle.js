@@ -47,7 +47,14 @@ const SingleArticle = ({ setActiveView, articleId, changeTopic, topic }) => {
             <div onClick={handleSearchClick} className='singlearticle-title-text-main'>NEWS WAVE</div>
             <div className='singlearticle-subtext-main'>Discover news effortlessly</div>
           </div>
-          <div className="singlearticle-profile-button"></div>
+          
+          <div className="singlearticle-profile-button">
+          <img src="./imgs/account.png" 
+            alt="Description" 
+            style={{ width: '20px', height: '20px' }}
+            onClick={handleHomeClick} 
+            />
+          </div>
 
           <div className="singlearticle-seach">
             <input 

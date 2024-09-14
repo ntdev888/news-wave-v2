@@ -50,6 +50,8 @@
   
 .singlearticle-profile-button { 
     grid-area: sa-profile-button; 
+    align-content: flex-end;
+    justify-self: start;
 }
 
 .singlearticle-title-main {
@@ -101,6 +103,7 @@
     grid-area: sa-topical-news; 
     padding-left: 15px;
     padding-right: 20px;
+    font-weight: bold;
 
 }
   
