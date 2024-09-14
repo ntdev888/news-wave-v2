@@ -13,7 +13,7 @@ const LoginScreen = ({setActiveView, setUser, setToken}) => {
 
     //log user in from information input into login fields
     try {
-      const response = await fetch("http://localhost:8080/api-token-auth/", {
+      const response = await fetch("http://localhost:8000/api/users/api-token-auth/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const LoginScreen = ({setActiveView, setUser, setToken}) => {
 
       //successful login will execute UserID Lookup in auth table on Django
       const userInfoResponse = await fetch(
-        "http://localhost:8080/api/get-user-id/?username=" +
+        "http://localhost:8000/api/users/get-user-id/?username=" +
           encodeURIComponent(username),
         {
           method: "GET",
@@ -59,9 +59,11 @@ const LoginScreen = ({setActiveView, setUser, setToken}) => {
 
       setUser(userData.user_id);
       console.log(`User ID set successfully! USERID : ${userData.user_id}`);
+      setActiveView("main");
     } catch (err) {
       setError("Failed to login. Please check your username and password.");
       console.error(err);
+      setIsPopupVisible(false);
     }
   };
 
@@ -90,7 +92,7 @@ const LoginScreen = ({setActiveView, setUser, setToken}) => {
     <div className="android-large-1">
 
 
-          {isPopupVisible && (
+      {isPopupVisible && (
         <div className="popup-overlay">
           <div className="popup-content">
             <h2>Login</h2>
@@ -105,7 +107,7 @@ const LoginScreen = ({setActiveView, setUser, setToken}) => {
                 <input type="password" name="password" />
               </label>
               <br />
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={handleLogin}>Submit</button>
               <button type="button" onClick={hidePopup}>
                 Close
               </button>
