@@ -23,7 +23,7 @@ const RouterComponenet = () => {
       case "loginScreen":
         return (
           <LoginScreen
-            authToken={authToken}
+            setToken={assignToAuthToken}  
             setActiveView={setActiveView}
             setUser={setUser}
           />
@@ -32,9 +32,9 @@ const RouterComponenet = () => {
       case "createUser":
         return (
           <CreateUser
-            authToken={authToken}
+            setToken={assignToAuthToken} 
             setActiveView={setActiveView}
-            user={user}
+            setUser={setUser}
           />
         );
 
@@ -75,7 +75,7 @@ const RouterComponenet = () => {
       default:
         return (
           <LoginScreen
-          setAuthToken={setAuthToken}
+          setToken={assignToAuthToken} 
           setActiveView={setActiveView}
           setUser={setUser}
         />
