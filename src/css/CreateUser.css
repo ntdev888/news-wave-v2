@@ -1,5 +1,11 @@
+.container-createuser {
+  display: grid;
+  height: 100%;
+  align-items: center;
+}
+
 .title-text {
-  color: rgba(0, 0, 0, 1);
+  color: rgb(255, 255, 255);
   font-family: 'Open Sans';
   font-size: 36px;
   font-weight: 400;
@@ -14,19 +20,42 @@
 }
 
 .subtext {
-  color: rgba(0, 0, 0, 1);
+  color: rgb(255, 255, 255);
   font-family: 'Open Sans Hebrew';
   font-size: 18px;
   font-weight: 700;
 }
 
 .cu-button-box {
+  margin-left: 20px;
+  margin-top: 20px;
   width: 80%;
   display: flex;
   flex-direction: row;
   justify-self: center;
   align-self: center;
   justify-content: center;
+}
+
+.form {
+  justify-content: center;
+}
+
+.form-elements {
+  margin-top: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 15px;
+  top: 150px; 
+  left: 20px; 
+  gap: 20px; 
+  color: white;
+}
+
+.input-div {
+  margin: 5px;
 }
 
 .form-field {

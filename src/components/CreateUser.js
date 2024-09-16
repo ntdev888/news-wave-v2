@@ -109,11 +109,10 @@ const CreateUser = ({ setActiveView, setUser, setToken }) => {
         <span className="subtext">Discover news effortlessly</span>
       </div>
 
-
       <div className='form-elements'>
         <form onSubmit={handleSubmit}>
 
-        <div>
+        <div className='input-div'>
             <label>Username</label>
             <input
               type="text"
@@ -125,7 +124,7 @@ const CreateUser = ({ setActiveView, setUser, setToken }) => {
             />
           </div>
 
-          <div>
+          <div className='input-div'>
             <label>Email</label>
             <input
               type="email"
@@ -137,7 +136,7 @@ const CreateUser = ({ setActiveView, setUser, setToken }) => {
             />
           </div>
 
-          <div className='form-field'>
+          <div className='input-div'>
             <label>Password</label>
             <input
               type="password"
@@ -156,6 +155,8 @@ const CreateUser = ({ setActiveView, setUser, setToken }) => {
           </div>
         </form>
       </div>
+
+
 
       {message && <p>{message}</p>}
     </div>
