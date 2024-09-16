@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from 'react';
-import LoginScreen from './LoginScreen';
-import CreateUser from './CreateUser';
-import MainScreen from './MainScreen';
-import SingleArticle from './SingleArticle';
-import '../css/router.css'
+import React, { useState, useEffect } from "react";
+import LoginScreen from "./LoginScreen";
+import CreateUser from "./CreateUser";
+import MainScreen from "./MainScreen";
+import SingleArticle from "./SingleArticle";
+import "../css/router.css";
 
 const RouterComponenet = () => {
   const [activeView, setActiveView] = useState("menu");
@@ -18,13 +18,12 @@ const RouterComponenet = () => {
     setAuthToken(value);
   };
 
-
   const renderView = () => {
     switch (activeView) {
       case "loginScreen":
         return (
           <LoginScreen
-            setToken={assignToAuthToken}  
+            setToken={assignToAuthToken}
             setActiveView={setActiveView}
             setUser={setUser}
           />
@@ -33,7 +32,7 @@ const RouterComponenet = () => {
       case "createUser":
         return (
           <CreateUser
-            setToken={assignToAuthToken} 
+            setToken={assignToAuthToken}
             setActiveView={setActiveView}
             setUser={setUser}
           />
@@ -46,22 +45,22 @@ const RouterComponenet = () => {
             authToken={authToken}
             setActiveView={setActiveView}
             user={user}
-            changeTopic={setTopic} 
+            changeTopic={setTopic}
           />
         );
 
       case "main":
         return (
-          <MainScreen 
-          setActiveView={setActiveView} 
-          changeTopic={setTopic} 
-          isLoading={isLoading}
-          topic={topic}
-          articles={articles}
-          setArticles={setArticles}
-          setIsLoading={setIsLoading}
-          setArticle={setArticle} 
-        />
+          <MainScreen
+            setActiveView={setActiveView}
+            changeTopic={setTopic}
+            isLoading={isLoading}
+            topic={topic}
+            articles={articles}
+            setArticles={setArticles}
+            setIsLoading={setIsLoading}
+            setArticle={setArticle}
+          />
         );
 
       // case "userAccountSettings":
@@ -76,12 +75,11 @@ const RouterComponenet = () => {
       default:
         return (
           <LoginScreen
-          setToken={assignToAuthToken} 
-          setActiveView={setActiveView}
-          setUser={setUser}
-        />
-      );
-
+            setToken={assignToAuthToken}
+            setActiveView={setActiveView}
+            setUser={setUser}
+          />
+        );
     }
   };
 

@@ -6,7 +6,7 @@
 
 .title-text {
   color: rgb(255, 255, 255);
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-size: 36px;
   font-weight: 400;
   text-decoration: underline;
@@ -21,7 +21,7 @@
 
 .subtext {
   color: rgb(255, 255, 255);
-  font-family: 'Open Sans Hebrew';
+  font-family: "Open Sans Hebrew";
   font-size: 18px;
   font-weight: 700;
 }
@@ -37,10 +37,6 @@
   justify-content: center;
 }
 
-.form {
-  justify-content: center;
-}
-
 .form-elements {
   margin-top: 20px;
   height: 100%;
@@ -48,9 +44,9 @@
   flex-direction: column;
   align-items: start;
   margin-left: 15px;
-  top: 150px; 
-  left: 20px; 
-  gap: 20px; 
+  top: 150px;
+  left: 20px;
+  gap: 20px;
   color: white;
 }
 
@@ -73,7 +69,6 @@
   border: 1px solid rgba(174, 176, 182, 1);
   border-radius: 10px;
   font-size: 16px;
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
   margin-top: 5px;
 }
-
